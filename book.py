@@ -169,7 +169,7 @@ class Book:
 
 def parse_book(book_path):
     book_content = epub.read_epub(book_path)
-    name = book_path.split("\\")[-1].split(".")[0]
+    name = os.path.basename(book_path)
     nav_items = book_content.get_items_of_type(ebooklib.ITEM_NAVIGATION)
     nav_item = next(nav_items)
     soup = BeautifulSoup(nav_item.get_content(), 'xml')
